@@ -1,9 +1,5 @@
-language: ruby
-rvm:
-- 1.9.3
-- 2.0.0
-- 2.1.2
-
-sudo: false
-script: bundle exec rspec
-bundler_args: "--without play"
+language: java
+install: mvn clean package -DskipTests=true
+jdk:
+  - oraclejdk8
+  - oraclejdk7

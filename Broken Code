@@ -1,0 +1,78 @@
+
+	public boolean fileRead(String sender){
+		boolean read = false;
+		try {
+			BufferedReader userReader = new BufferedReader(new FileReader(userFile));
+			if ((sender != userReader.readLine())) {
+				fileWrite(sender);
+				read = true;
+			}else{
+				read = false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return read;
+	}
+	public void fileWrite(String sender){
+		try {
+			PrintWriter userWriter = new PrintWriter(userFile);
+			userWriter.println(sender);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+    /*public void testSql(String sender){
+        try {
+            Connection myconn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/admins", "user", "p");
+            Statement mystmnt = myconn.createStatement();
+            String SQL = "insert into admins " + " (username, email)" + " values ( , 'k1llerk4se@live.com')";
+            mystmnt.executeUpdate(SQL);
+            //Statement allUser = myconn.createStatement();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }*/
+    /*public String isListed(String sender){
+        String allSenders = null;
+        try {
+            Connection myconn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/admins", "k1llerk4se", "Kazm9495893");
+            Statement allUser = myconn.createStatement();
+            ResultSet allUserRest = allUser.executeQuery("select user from users where user ='" + sender + "'");
+            allSenders = allUserRest.toString();
+            if (allSenders != sender){
+                CallableStatement userCall = myconn.prepareCall("{call insert_user(?)}");
+                userCall.setString(1, allSenders);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allSenders;
+    }*/
+
+    /*public void onJoin(String channel, String sender, String login, String hostname) {
+        boolean sqlUser = fileRead(sender);
+        if (sqlUser) {
+            sendMessage(channel, "Welcome to the crew " + sender);
+        }
+        else{
+            sendMessage(channel, "Welcome back " + sender + " good to see you again");
+        }
+    }*/
+        /*if (message.equalsIgnoreCase("!mod")) {
+            if (sender == "k1llerk4se") {
+                String name;
+                name = message.split(" ")[1];
+                testSql(name);
+            }
+        }*/
+	    /*if(message.equalsIgnoreCase("!game")){
+		    String name = message.split(" ")[2];
+		    if(sender == "k1llerk4se!k1llerk4se@k1llerk4se.tmi.twitch.tv"){
+			    game = name;
+			    sendMessage(channel, "The game has been set to:" + name);
+		    }else{
+			    sendMessage(channel, game);
+		    }
+	    }*/
+	File userFile = new File("Users.txt");
